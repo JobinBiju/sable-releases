@@ -16,7 +16,7 @@
 
 <p align="center">
   <a href="https://github.com/JobinBiju/sable-releases/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/JobinBiju/sable-releases?style=flat-square&label=latest&color=88c0d0"></a>
-  <img alt="macOS 11 or later" src="https://img.shields.io/badge/macOS-11%20or%20later-555555?style=flat-square&logo=apple&logoColor=white">
+  <img alt="macOS and Linux" src="https://img.shields.io/badge/runs%20on-macOS%20%C2%B7%20Linux-555555?style=flat-square">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-555555?style=flat-square">
 </p>
 
@@ -33,20 +33,25 @@ lists what changed.
 ## Download
 
 Open the [latest release](https://github.com/JobinBiju/sable-releases/releases/latest)
-and pick the file for your Mac:
+and pick the file for your system:
 
-| Your Mac | Download |
+| Your system | Download |
 | --- | --- |
-| Apple silicon (M1 and later) | `sable-<version>-macos-arm64.dmg` |
-| Intel, or not sure | `sable-<version>-macos-universal.dmg` (runs on any Mac) |
+| Mac with Apple silicon (M1 and later) | `sable-<version>-macos-arm64.dmg` |
+| Mac with Intel, or not sure | `sable-<version>-macos-universal.dmg` (runs on any Mac) |
+| Debian, Ubuntu | `sable-<version>-linux-x86_64.deb` |
+| Fedora, openSUSE | `sable-<version>-linux-x86_64.rpm` |
+| Arch | `sable-<version>-linux-x86_64.pkg.tar.zst` |
+| Any Linux | `sable-<version>-linux-x86_64.tar.gz` |
 
-Each also comes as a `.zip` with the app inside, if you prefer not to use a
-disk image.
+Mac builds also come as a `.zip` with the app inside. For 64-bit ARM Linux,
+pick the same packages named `linux-aarch64`.
 
-Windows and Linux builds are paused for now and will return in a later
-release.
+Windows builds will return in a later release.
 
 ## Install
+
+### macOS
 
 1. Open the `.dmg` and drag **Sable** to **Applications**.
 2. Open Sable from Applications.
@@ -61,9 +66,23 @@ macOS cannot check it. To open it anyway:
 
 You only need to do this once.
 
+### Linux
+
+Install the package with your package manager, for example:
+
+```sh
+sudo apt install ./sable-<version>-linux-x86_64.deb    # Debian, Ubuntu
+sudo dnf install ./sable-<version>-linux-x86_64.rpm    # Fedora
+sudo pacman -U sable-<version>-linux-x86_64.pkg.tar.zst  # Arch
+```
+
+Or extract the `.tar.gz` and run `./Sable`. Sable needs glibc 2.35 or newer
+(Ubuntu 22.04, Debian 12, Fedora 36 and later), OpenGL or EGL, and X11 or
+Wayland.
+
 ## Updates
 
-From version 0.2.14 on, Sable updates itself. It checks once a day, downloads a
+On macOS, from version 0.2.14 on, Sable updates itself. It checks once a day, downloads a
 new version in the background, and asks you to restart. Your open windows,
 files and unsaved changes come back after the restart. You can also choose
 **Sable → Check for Updates…** at any time.
@@ -76,6 +95,9 @@ choose a channel:
 
 If you have a version older than 0.2.14, download the latest release once by
 hand; after that, updates arrive on their own.
+
+On Linux, Sable tells you when a new version is out and opens the download;
+install it the same way as the first time.
 
 ## Verify a download
 
@@ -95,7 +117,8 @@ into the app and the download matches its checksum.
 
 ## What you need
 
-- **macOS 11 (Big Sur) or later**, on Apple silicon or Intel.
+- **macOS 11 (Big Sur) or later**, on Apple silicon or Intel, or **Linux**
+  with glibc 2.35 or newer on x86_64 or ARM64.
 - **Git**, for source control (optional).
 - **Language servers and formatters** for the languages you use (optional).
   Sable finds the ones you have installed; set them up in
@@ -106,13 +129,14 @@ into the app and the download matches its checksum.
 ## Where Sable keeps your settings
 
 Settings, recent folders and window state live in
-`~/Library/Application Support/Sable`, not inside the app. Updating or
+`~/Library/Application Support/Sable` on macOS and `~/.config/sable` on Linux,
+not inside the app. Updating or
 reinstalling Sable keeps them.
 
 ## Feedback
 
 Found a problem or have an idea? [Open an issue](https://github.com/JobinBiju/sable-releases/issues)
-and include your Sable version (**Sable → About Sable**) and your macOS version.
+and include your Sable version (**Sable → About Sable**) and your system.
 
 ## License
 
